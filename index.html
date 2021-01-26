@@ -30,7 +30,7 @@
 
             document.getElementById('isThirdBrowser').innerHTML = navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
 
-            document.getElementById('download').innerHTML =  'download' in document.createElement('a');
+            // document.getElementById('download').innerHTML =  'download' in document.createElement('a');
 
             window.onerror = function(message) {
                 document.getElementById('error').append(message + '\n');
