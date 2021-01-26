@@ -50,8 +50,7 @@
                 document.getElementById('base64').href = canvas.toDataURL();
 
                 canvas.toBlob(blob => {
-                    console.log('canvas.toDataURL()', URL.createObjectURL(blob));
-                    URL.createObjectURL(blob).then(url => document.getElementById('blob').href=url);
+                    document.getElementById('blob').href = URL.createObjectURL(blob);
                 });
             }
 
