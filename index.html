@@ -3,7 +3,36 @@
     <head>
         <meta charset="utf-8" />
         <title>Browser behavior detection</title>
-        <script>
+    </head>
+    <body>
+        <p>Browser agent: <span id="browserAgent"></span></p>
+
+        <p>Third Browser: <span id="isThirdBrowser"></span></p>
+        <img src="/teamgroup.png" style="max-width: 100%;" onload="generateUrl" id="generateUrlImage" />
+        <p>
+            <a href="/manual.docx" download>Download a docx</a>
+        </p>
+        <p>
+            <a href="/teamgroup.png" download>Download Image Through Direct URL</a>
+        </p>
+        <p>
+            <a id="base64" download>Download Image Through Base64 Code</a>
+        </p>
+        <p>
+            <a id= 'blob' download>Download Image Through Blob Url</a>
+        </p>
+        <p id="error" style="color: red;"></p>
+        <script type="text/javascript">
+            document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
+    
+            document.getElementById('isThirdBrowser').innerHTML = navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
+    
+            // document.getElementById('download').innerHTML =  'download' in document.createElement('a');
+    
+            window.onerror = function(message) {
+                document.getElementById('error').append(message + '\n');
+            }
+
             function generateUrl(e) {
                 const canvas = document.createElement('canvas');
                 const image = e.target;
@@ -26,36 +55,10 @@
                     URL.createObjectURL(blob).then(url => document.getElementById('blob').href=url);
                 });
             }
+
+            setTimeout(() => {
+                generateUrl({ target: document.getElementById('generateUrlImage')});
+            }, 500);
         </script>
-    </head>
-    <body>
-        <p>Browser agent: <span id="browserAgent"></span></p>
-
-        <p>Third Browser: <span id="isThirdBrowser"></span></p>
-        <img src="/teamgroup.png" style="max-width: 100%;" onload="generateUrl" />
-        <p>
-            <a href="/manual.docx" download>Download a docx</a>
-        </p>
-        <p>
-            <a href="/teamgroup.png" download>Download Image Through Direct URL</a>
-        </p>
-        <p>
-            <a id="base64" download>Download Image Through Base64 Code</a>
-        </p>
-        <p>
-            <a id= 'blob' download>Download Image Through Blob Url</a>
-        </p>
-        <p id="error" style="color: red;"></p>
     </body>
-    <script>
-        document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
-
-        document.getElementById('isThirdBrowser').innerHTML = navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
-
-        // document.getElementById('download').innerHTML =  'download' in document.createElement('a');
-
-        window.onerror = function(message) {
-            document.getElementById('error').append(message + '\n');
-        }
-    </script>
 </html>
