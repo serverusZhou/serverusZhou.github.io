@@ -6,8 +6,9 @@
     </head>
     <body>
         <p>Browser agent: <span id="browserAgent"></span></p>
-        <p>Support Download: <span id="download"></span></p>
-        <img src="/teamgroup.png"/>
+
+        <p>Third Browser: <span id="isThirdBrowser"></span></p>
+        <img src="/teamgroup.png" style="max-width: 100%;" />
         <p>
             <a href="/manual.docx" download>Download</a>
         </p>
@@ -15,9 +16,13 @@
             <a href="/teamgroup.png" download>Download Image</a>
         </p>
 
+
+
         <p id="error" style="color: red;"></p>
         <script>
             document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
+
+            document.getElementById('browserAgent').innerHTML = navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
 
             document.getElementById('download').innerHTML =  'download' in document.createElement('a');
 
