@@ -9,7 +9,7 @@
             <p>Browser agent: <span id="browserAgent"></span></p>
 
             <p>Third Browser: <span id="isThirdBrowser"></span></p>
-            <img src="/teamgroup.png" style="max-width: 30%;" onload="generateUrl" id="generateUrlImage" />
+            <img src="/teamgroup.png" style="max-width: 30%;" onload="generateUrl()" id="generateUrlImage" />
             <p>Base64 Image</p>
             <img src="" style="max-width: 30%;" id="bse64Image" />
             <p>
@@ -24,7 +24,7 @@
             <p>
                 <a id= 'blob' download>Download Image Through Blob Url</a>
             </p>
-            <button onclick="openImageInNewPage">Open image in new page</button>
+            <button onclick="openImageInNewPage()">Open image in new page</button>
             <p id="error" style="color: red;"></p>
         </div>
         <div id="maskPage" style="position: relative;display: none;">
