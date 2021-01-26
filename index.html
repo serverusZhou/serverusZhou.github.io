@@ -29,7 +29,7 @@
         </div>
         <div id="maskPage" style="position: relative;display: none;">
             <img src="" id="bse64Image1" />
-            <button onclick="closeImageInNewPage" style="position: relative;bottom: 0;margin: 0 auto;left: 0;right: 0;">Open image in new page</button>
+            <button onclick="closeImageInNewPage()" style="position: relative;bottom: 0;margin: 0 auto;left: 0;right: 0;">Open image in new page</button>
         </div>
         <script type="text/javascript">
             document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
@@ -42,9 +42,9 @@
                 document.getElementById('error').append(message + '\n');
             }
 
-            function generateUrl(e) {
+            function generateUrl() {
                 const canvas = document.createElement('canvas');
-                const image = e.target;
+                const image = this;
                 const ctx = canvas.getContext('2d');
 
                 ctx.drawImage(image, 0, 0, image.width, image.height);
@@ -65,10 +65,6 @@
                 document.getElementById('normalPage').style.display = "block";
                 document.getElementById('maskPage').style.display = "hidden";
             }
-
-            setTimeout(() => {
-                generateUrl({ target: document.getElementById('generateUrlImage')});
-            }, 3000);
         </script>
     </body>
 </html>
