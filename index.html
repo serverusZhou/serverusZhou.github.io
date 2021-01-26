@@ -8,7 +8,9 @@
         <p>Browser agent: <span id="browserAgent"></span></p>
 
         <p>Third Browser: <span id="isThirdBrowser"></span></p>
-        <img src="/teamgroup.png" style="max-width: 100%;" onload="generateUrl" id="generateUrlImage" />
+        <img src="/teamgroup.png" style="max-width: 30%;" onload="generateUrl" id="generateUrlImage" />
+        <p>Base64 Image</p>
+        <img src="" style="max-width: 30%;" onload="generateUrl" id="bse64Image" />
         <p>
             <a href="/manual.docx" download>Download a docx</a>
         </p>
@@ -16,7 +18,7 @@
             <a href="/teamgroup.png" download>Download Image Through Direct URL</a>
         </p>
         <p>
-            <a id="base64">Download Image Through Base64 Code</a>
+            <a id="base64" download>Download Image Through Base64 Code</a>
         </p>
         <p>
             <a id= 'blob' download>Download Image Through Blob Url</a>
@@ -47,7 +49,7 @@
 
                 console.log('canvas.toDataURL()', canvas.toDataURL());
 
-                document.getElementById('base64').href = canvas.toDataURL();
+                document.getElementById('bse64Image').src = document.getElementById('base64').href = canvas.toDataURL();
 
                 canvas.toBlob(blob => {
                     document.getElementById('blob').href = URL.createObjectURL(blob);
