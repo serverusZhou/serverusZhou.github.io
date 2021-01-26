@@ -40,14 +40,7 @@
                 const image = e.target;
                 const ctx = canvas.getContext('2d');
 
-                const imagePositionX = image.x || 0;
-                const imagePositionY = image.y || 0;
-                const imageWidth = image.width;
-                const imageHeight = image.height;
-
-                ctx.drawImage(image, imagePositionX, imagePositionY, imageWidth, imageHeight);
-
-                console.log('canvas.toDataURL()', canvas.toDataURL());
+                ctx.drawImage(image, 0, 0, image.width, image.height);
 
                 document.getElementById('bse64Image').src = document.getElementById('base64').href = canvas.toDataURL();
 
@@ -58,7 +51,7 @@
 
             setTimeout(() => {
                 generateUrl({ target: document.getElementById('generateUrlImage')});
-            }, 500);
+            }, 3000);
         </script>
     </body>
 </html>
