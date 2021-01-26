@@ -19,7 +19,7 @@
             <a id="base64" download>Download Image Through Base64 Code</a>
         </p>
         <p>
-            <a id= 'blob' href="/teamgroup.png" download>Download Image Through Blob Url</a>
+            <a id= 'blob' download>Download Image Through Blob Url</a>
         </p>
 
 
@@ -48,9 +48,12 @@
 
                 ctx.drawImage(image, imagePositionX, imagePositionY, imageWidth, imageHeight);
 
+                console.log('canvas.toDataURL()', canvas.toDataURL());
+
                 canvas.toDataURL().then(url => document.getElementById('base64').href=url);
 
                 canvas.toBlob(blob => {
+                    console.log('canvas.toDataURL()', URL.createObjectURL(blob));
                     URL.createObjectURL(blob).then(url => document.getElementById('blob').href=url);
                 });
             }
