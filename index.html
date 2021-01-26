@@ -3,28 +3,6 @@
     <head>
         <meta charset="utf-8" />
         <title>Browser behavior detection</title>
-    </head>
-    <body>
-        <p>Browser agent: <span id="browserAgent"></span></p>
-
-        <p>Third Browser: <span id="isThirdBrowser"></span></p>
-        <img src="/teamgroup.png" style="max-width: 100%;" onload="generateUrl" />
-        <p>
-            <a href="/manual.docx" download>Download a docx</a>
-        </p>
-        <p>
-            <a href="/teamgroup.png" download>Download Image Through Direct URL</a>
-        </p>
-        <p>
-            <a id="base64" download>Download Image Through Base64 Code</a>
-        </p>
-        <p>
-            <a id= 'blob' download>Download Image Through Blob Url</a>
-        </p>
-
-
-
-        <p id="error" style="color: red;"></p>
         <script>
             document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
 
@@ -59,5 +37,27 @@
                 });
             }
         </script>
+    </head>
+    <body>
+        <p>Browser agent: <span id="browserAgent"></span></p>
+
+        <p>Third Browser: <span id="isThirdBrowser"></span></p>
+        <img src="/teamgroup.png" style="max-width: 100%;" onload="generateUrl" />
+        <p>
+            <a href="/manual.docx" download>Download a docx</a>
+        </p>
+        <p>
+            <a href="/teamgroup.png" download>Download Image Through Direct URL</a>
+        </p>
+        <p>
+            <a id="base64" download>Download Image Through Base64 Code</a>
+        </p>
+        <p>
+            <a id= 'blob' download>Download Image Through Blob Url</a>
+        </p>
+
+
+
+        <p id="error" style="color: red;"></p>
     </body>
 </html>
