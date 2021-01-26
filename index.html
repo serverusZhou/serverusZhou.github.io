@@ -42,8 +42,7 @@
 
             function generateUrl() {
                 const canvas = document.createElement('canvas');
-                console.log('thisthis', this);
-                const image = this;
+                const image = document.getElementById('generateUrlImage');
                 const ctx = canvas.getContext('2d');
 
                 ctx.drawImage(image, 0, 0, image.width, image.height);
