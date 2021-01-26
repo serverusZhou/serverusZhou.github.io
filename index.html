@@ -7,7 +7,9 @@
     <body>
         <p>Browser agent: <span id="browserAgent"></span></p>
         <p>Support Download: <span id="download"></span></p>
+        <img src="/test.jpeg"/>
         <a href="/manual.docx" download>Download</a>
+        <a href="/test.jpeg" download>Download Image</a>
 
         <p id="error" style="color: red;"></p>
         <script>
@@ -16,7 +18,6 @@
             document.getElementById('download').innerHTML =  'download' in document.createElement('a');
 
             window.onerror = function(message) {
-                alert(message);
                 document.getElementById('error').append(message + '\n');
             }
         </script>
