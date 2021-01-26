@@ -22,7 +22,7 @@
         <script>
             document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
 
-            document.getElementById('browserAgent').innerHTML = navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
+            document.getElementById('isThirdBrowser').innerHTML = navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
 
             document.getElementById('download').innerHTML =  'download' in document.createElement('a');
 
