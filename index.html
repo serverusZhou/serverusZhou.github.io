@@ -6,8 +6,12 @@
     </head>
     <body>
         <p>Browser agent: <span id="browserAgent"></span></p>
+        <p>Support Download: <span id="download"></span></p>
+        <a href="">Download</a>
         <script>
             document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
+
+            document.getElementById('download').innerHTML =  'download' in document.createElement('a');
         </script>
     </body>
 </html>
