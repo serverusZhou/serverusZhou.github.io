@@ -16,6 +16,7 @@
             document.getElementById('download').innerHTML =  'download' in document.createElement('a');
 
             window.onerror = function(message) {
+                alert(message);
                 document.getElementById('error').append(message + '\n');
             }
         </script>
