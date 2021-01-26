@@ -36,14 +36,13 @@
     
             document.getElementById('isThirdBrowser').innerHTML = !!navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
     
-            // document.getElementById('download').innerHTML =  'download' in document.createElement('a');
-    
             window.onerror = function(message) {
                 document.getElementById('error').append(message + '\n');
             }
 
             function generateUrl() {
                 const canvas = document.createElement('canvas');
+                console.log('thisthis', this);
                 const image = this;
                 const ctx = canvas.getContext('2d');
 
