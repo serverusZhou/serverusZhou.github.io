@@ -8,12 +8,18 @@
         <p>Browser agent: <span id="browserAgent"></span></p>
 
         <p>Third Browser: <span id="isThirdBrowser"></span></p>
-        <img src="/teamgroup.png" style="max-width: 100%;" />
+        <img src="/teamgroup.png" style="max-width: 100%;" onload="generateUrl" />
         <p>
-            <a href="/manual.docx" download>Download</a>
+            <a href="/manual.docx" download>Download a docx</a>
         </p>
         <p>
-            <a href="/teamgroup.png" download>Download Image</a>
+            <a href="/teamgroup.png" download>Download Image Through Direct URL</a>
+        </p>
+        <p>
+            <a id="base64" download>Download Image Through Base64 Code</a>
+        </p>
+        <p>
+            <a id= 'blob' href="/teamgroup.png" download>Download Image Through Blob Url</a>
         </p>
 
 
@@ -28,6 +34,25 @@
 
             window.onerror = function(message) {
                 document.getElementById('error').append(message + '\n');
+            }
+
+            function generateUrl(e) {
+                const canvas = document.createElement('canvas');
+                const image = e.target;
+                const ctx = canvas.getContext('2d');
+
+                const imagePositionX = image.x || 0;
+                const imagePositionY = image.y || 0;
+                const imageWidth = image.width;
+                const imageHeight = image.height;
+
+                ctx.drawImage(image, imagePositionX, imagePositionY, imageWidth, imageHeight);
+
+                canvas.toDataURL().then(url => document.getElementById('base64').href=url);
+
+                canvas.toBlob(blob => {
+                    URL.createObjectURL(blob).then(url => document.getElementById('blob').href=url);
+                });
             }
         </script>
     </body>
