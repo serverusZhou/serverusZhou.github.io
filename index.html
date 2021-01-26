@@ -5,25 +5,32 @@
         <title>Browser behavior detection</title>
     </head>
     <body>
-        <p>Browser agent: <span id="browserAgent"></span></p>
+        <div id="normalPage">
+            <p>Browser agent: <span id="browserAgent"></span></p>
 
-        <p>Third Browser: <span id="isThirdBrowser"></span></p>
-        <img src="/teamgroup.png" style="max-width: 30%;" onload="generateUrl" id="generateUrlImage" />
-        <p>Base64 Image</p>
-        <img src="" style="max-width: 30%;" onload="generateUrl" id="bse64Image" />
-        <p>
-            <a href="/manual.docx" download>Download a docx</a>
-        </p>
-        <p>
-            <a href="/teamgroup.png" download>Download Image Through Direct URL</a>
-        </p>
-        <p>
-            <a id="base64" download>Download Image Through Base64 Code</a>
-        </p>
-        <p>
-            <a id= 'blob' download>Download Image Through Blob Url</a>
-        </p>
-        <p id="error" style="color: red;"></p>
+            <p>Third Browser: <span id="isThirdBrowser"></span></p>
+            <img src="/teamgroup.png" style="max-width: 30%;" onload="generateUrl" id="generateUrlImage" />
+            <p>Base64 Image</p>
+            <img src="" style="max-width: 30%;" id="bse64Image" />
+            <p>
+                <a href="/manual.docx" download>Download a docx</a>
+            </p>
+            <p>
+                <a href="/teamgroup.png" download>Download Image Through Direct URL</a>
+            </p>
+            <p>
+                <a id="base64" download>Download Image Through Base64 Code</a>
+            </p>
+            <p>
+                <a id= 'blob' download>Download Image Through Blob Url</a>
+            </p>
+            <button onclick="openImageInNewPage">Open image in new page</button>
+            <p id="error" style="color: red;"></p>
+        </div>
+        <div id="maskPage" style="position: relative;">
+            <img src="" id="bse64Image1" />
+            <button onclick="closeImageInNewPage" style="position: relative;bottom: 0;margin: 0 auto;left: 0;right: 0;">Open image in new page</button>
+        </div>
         <script type="text/javascript">
             document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
     
@@ -42,11 +49,21 @@
 
                 ctx.drawImage(image, 0, 0, image.width, image.height);
 
-                document.getElementById('bse64Image').src = document.getElementById('base64').href = canvas.toDataURL();
+                document.getElementById('bse64Image1').src = document.getElementById('bse64Image').src = document.getElementById('base64').href = canvas.toDataURL();
 
                 canvas.toBlob(blob => {
                     document.getElementById('blob').href = URL.createObjectURL(blob);
                 });
+            }
+            
+            function openImageInNewPage() {
+                document.getElementById('normalPage').style.display = "hidden";
+                document.getElementById('maskPage').style.display = "block";
+            }
+            
+            function closeImageInNewPage() {
+                document.getElementById('normalPage').style.display = "block";
+                document.getElementById('maskPage').style.display = "hidden";
             }
 
             setTimeout(() => {
