@@ -58,16 +58,20 @@
             }
             
             function openImageInNewPage() {
-                history.pushState({showImage: true}, 'download image');
+                history.pushState(null, null, location.href + '#showImage');
                 document.getElementById('normalPage').style.display = "none";
                 document.getElementById('maskPage').style.display = "block";
             }
             
-            function closeImageInNewPage() {
-                history.goback();
+            window.addEventListener("hashchange", function(event){
+               if (location.href.indexOf(#showImage) > -1) {
+                 document.getElementById('normalPage').style.display = "none";
+                 document.getElementById('maskPage').style.display = "block";
+               } else {
                 document.getElementById('normalPage').style.display = "block";
-                document.getElementById('maskPage').style.display = "none";
-            }
+                document.getElementById('maskPage').style.display = "none";                
+               }
+          });
         </script>
     </body>
 </html>
