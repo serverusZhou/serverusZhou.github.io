@@ -58,7 +58,7 @@
             }
             
             function openImageInNewPage() {
-                history.pushState({showImage: true});
+                history.pushState({showImage: true}, 'download image');
                 document.getElementById('normalPage').style.display = "none";
                 document.getElementById('maskPage').style.display = "block";
             }
