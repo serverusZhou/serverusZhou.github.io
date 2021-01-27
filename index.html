@@ -26,6 +26,7 @@
                 <a id= 'blob' download>Download Image Through Blob Url</a>
             </p>
             <button onclick="openImageInNewPage()">Open image in new page</button>
+             <button onclick="openNewWindow()">Open in new window</button>
             <p id="error" style="color: red;"></p>
         </div>
         <div id="maskPage" style="position: relative;display: none;">
@@ -36,6 +37,7 @@
             document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
     
             document.getElementById('isThirdBrowser').innerHTML = !!navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
+            let bse64ImagePath = ‘’；
     
             window.onerror = function(message) {
                 document.getElementById('error').append(message + '\n');
@@ -50,7 +52,7 @@
 
                 ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight);
 
-                document.getElementById('bse64Image1').src = document.getElementById('bse64Image').src = document.getElementById('base64').href = canvas.toDataURL();
+                bse64ImagePath = document.getElementById('bse64Image1').src = document.getElementById('bse64Image').src = document.getElementById('base64').href = canvas.toDataURL();
 
                 canvas.toBlob(blob => {
                     document.getElementById('blob').href = URL.createObjectURL(blob);
@@ -61,6 +63,13 @@
                 history.pushState(null, null, location.href + '#showImage');
                 document.getElementById('normalPage').style.display = "none";
                 document.getElementById('maskPage').style.display = "block";
+            }
+            
+            function openNewWindow() {
+                const newWindow = window.open('about:blank');
+
+                newWindow.document.write(`<html><head><title>TOTY</title></head><body><img src="${bse64ImagePath}" /></body></html>`);
+                newWindow.opener = null;
             }
             
             window.addEventListener("hashchange", function(event){
