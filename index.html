@@ -58,11 +58,13 @@
             }
             
             function openImageInNewPage() {
+                history.pushState({showImage: true});
                 document.getElementById('normalPage').style.display = "none";
                 document.getElementById('maskPage').style.display = "block";
             }
             
             function closeImageInNewPage() {
+                history.goback();
                 document.getElementById('normalPage').style.display = "block";
                 document.getElementById('maskPage').style.display = "none";
             }
