@@ -37,7 +37,7 @@
             document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
     
             document.getElementById('isThirdBrowser').innerHTML = !!navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
-            let bse64ImagePath = ‘’；
+            let bse64ImagePath = ""；
     
             window.onerror = function(message) {
                 document.getElementById('error').append(message + '\n');
