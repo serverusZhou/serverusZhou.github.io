@@ -11,6 +11,7 @@
 
             <p>Third Browser: <span id="isThirdBrowser"></span></p>
             <p>Support localStorage: <span id="isSupportLocalStorage"></span></p>
+            <p>LocalStorage Value: <span id="localStorageValue"></span></p>
             <img src="/teamgroup.png" style="display: none;" onload="generateUrl()" id="generateUrlImage" />
             <p>Base64 Image</p>
             <img src="" style="max-width: 30%;" id="bse64Image" />
@@ -40,6 +41,11 @@
             document.getElementById('isThirdBrowser').innerHTML = !!navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
             
             document.getElementById('isSupportLocalStorage').innerHTML = window.Storage && window.localStorage && window.localStorage instanceof Storage;
+            
+            window.localStorage && (window.localStorage.setItem('a', 'local storage value is right');
+                                    
+            document.getElementById('localStorageValue').innerHTML = window.localStorage.getItem('a');
+            
             let bse64ImagePath = "";
     
             window.onerror = function(message) {
