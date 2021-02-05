@@ -39,7 +39,7 @@
     
             document.getElementById('isThirdBrowser').innerHTML = !!navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
             
-            document.getElementById('isThirdBrowser').innerHTML = window.Storage && window.localStorage && window.localStorage instanceof Storage;
+            document.getElementById('isSupportLocalStorage').innerHTML = window.Storage && window.localStorage && window.localStorage instanceof Storage;
             let bse64ImagePath = "";
     
             window.onerror = function(message) {
