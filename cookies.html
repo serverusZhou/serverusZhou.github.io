@@ -29,16 +29,16 @@
         <div id="normalPage">
             <p>Support Cookies: <span id="supportCookies"></span></p>
             <div class="tabs">
-                <div class='tab' tab="1" tabindex="0">1</div>
-                <div class='tab' tab="2" tabindex="0">2</div>
-                <div class='tab' tab="3" tabindex="0">3</div>
-                <div class='tab' tab="4" tabindex="0">4</div>
-                <div class='tab' tab="5" tabindex="0">5</div>
-                <div class='tab' tab="6" tabindex="0">6</div>
-                <div class='tab' tab="7" tabindex="0">7</div>
-                <div class='tab' tab="8" tabindex="0">8</div>
-                <div class='tab' tab="9" tabindex="0">9</div>
-                <div class='tab' tab="10" tabindex="0">10</div>
+                <div class='tab' tab="1" tabindex="0" onfocus="focus()">1</div>
+                <div class='tab' tab="2" tabindex="0" onfocus="focus()">2</div>
+                <div class='tab' tab="3" tabindex="0" onfocus="focus()">3</div>
+                <div class='tab' tab="4" tabindex="0" onfocus="focus()">4</div>
+                <div class='tab' tab="5" tabindex="0" onfocus="focus()">5</div>
+                <div class='tab' tab="6" tabindex="0" onfocus="focus()">6</div>
+                <div class='tab' tab="7" tabindex="0" onfocus="focus()">7</div>
+                <div class='tab' tab="8" tabindex="0" onfocus="focus()">8</div>
+                <div class='tab' tab="9" tabindex="0" onfocus="focus()">9</div>
+                <div class='tab' tab="10" tabindex="0" onfocus="focus()">10</div>
             </div>
         </div>
         <script type="text/javascript">
@@ -74,6 +74,10 @@
              exp.setTime(exp.getTime() - 1);
              var cval=getCookie(name);
              if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+          }
+          function focus(e) {
+              console.log('focusfocus');
+              e.preventDefault();
           }
         </script>
     </body>
