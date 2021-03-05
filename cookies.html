@@ -57,6 +57,7 @@
           console.log('tab' in supportCookies);
             
           document.getElementById('baiduJump').addEventListener('click', e => e.preventDefault());
+            document.getElementById('baiduJump').addEventListener('dragstart', () => {return false});
 
           function SetCookie(name,value)//两个参数，一个是cookie的名子，一个是值
           {
