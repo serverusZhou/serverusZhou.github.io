@@ -10,8 +10,10 @@
             <img src="/teamgroup.png" style="display: none;" onload="generateUrl()" id="generateUrlImage" />
             <p>Base64 Image</p>
             <img src="" style="max-width: 30%;" id="bse64Image" />
-            <button onclick="openImageInNewPage()">Open image in new page 1</button>
-            <button onclick="openImageInNewPage()">Open image in new page 2</button>
+            <div>
+                <div onclick="openImageInNewPage()" style="padding: 5px;border: 1px #f0f0f0 solid;border-radius: 5px;">Open image in new page 1</div>
+                <div onclick="openImageInNewPage()" style="padding: 5px;border: 1px #f0f0f0 solid;border-radius: 5px;">Open image in new page 2</div>
+            </div>
             <p id="error" style="color: red;"></p>
         </div>
         <div id="maskPage" style="position: fixed;display: none;z-index: 999;top: 0; left: 0; width: 100%; height: 100%;">
