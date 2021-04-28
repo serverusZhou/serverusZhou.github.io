@@ -28,7 +28,7 @@
 
                 ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight);
 
-                bse64ImagePath = document.getElementById('bse64Image1').src = document.getElementById('bse64Image').src = document.getElementById('base64').href = canvas.toDataURL();
+                bse64ImagePath = document.getElementById('bse64Image1').src = document.getElementById('bse64Image').src = canvas.toDataURL();
 
                 canvas.toBlob(blob => {
                     document.getElementById('blob').href = URL.createObjectURL(blob);
