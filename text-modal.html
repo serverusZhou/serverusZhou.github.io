@@ -10,14 +10,8 @@
             <img src="/teamgroup.png" style="display: none;" onload="generateUrl()" id="generateUrlImage" />
             <p>Base64 Image</p>
             <img src="" style="max-width: 30%;" id="bse64Image" />
-            <p>
-                <a id="base64" download>Download Image Through Base64 Code</a>
-            </p>
-            <p>
-                <a id= 'blob' download>Download Image Through Blob Url</a>
-            </p>
-            <button onclick="openImageInNewPage()">Open image in new page</button>
-             <button onclick="openNewWindow()">Open in new window</button>
+            <button onclick="openImageInNewPage()">Open image in new page 1</button>
+            <button onclick="openImageInNewPage()">Open image in new page 2</button>
             <p id="error" style="color: red;"></p>
         </div>
         <div id="maskPage" style="position: fixed;display: none;z-index: 999;top: 0; left: 0; width: 100%; height: 100%;">
@@ -25,11 +19,6 @@
         </div>
         <script type="text/javascript">  
             let bse64ImagePath = "";
-    
-            window.onerror = function(message) {
-                document.getElementById('error').append(message + '\n');
-            }
-
             function generateUrl() {
                 const canvas = document.createElement('canvas');
                 const image = document.getElementById('generateUrlImage');
@@ -49,13 +38,6 @@
             function openImageInNewPage() {
                 history.pushState(null, null, location.href + '#showImage');
                 document.getElementById('maskPage').style.display = "block";
-            }
-            
-            function openNewWindow() {
-                const newWindow = window.open('about:blank');
-
-                newWindow.document.write(`<html><head><title>TOTY</title></head><body><img src="${bse64ImagePath}" /></body></html>`);
-                newWindow.opener = null;
             }
             
             window.addEventListener("hashchange", function(event){
