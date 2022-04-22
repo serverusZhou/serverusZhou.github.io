@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test post message</title>
+    </head>
+    <body>
+        This is test post message page
+    </body>
+    <script>
+        setTimeout(() => {
+            window.postMessage('hello, this is inside page');
+        }, 3000);
+    </script>
+</html>
