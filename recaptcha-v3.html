@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Test recaptcha V3</title>
+</head>
+<style>
+    .grecaptcha-badge {
+        display: none;
+    }
+</style>
+
+<body>
+    <h3>This a page for test recaptcha V3</h3>
+    <button onclick="onClick(event)">Get token</button>
+    <p>Token: <span id="token"></span></p>
+</body>
+<script type="text/javascript">
+    function onClick(e) {
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LeqYd4fAAAAAN5uxDilw6WYP5x6tjY10a1Xt6Ej', { action: 'login' }).then(function (token) {
+                document.getElementById("token").innerText = token;
+
+                fetch('http://localhost:4001/getRecaptchaV3', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify({ token }),
+                }).then(function (data) {
+                    data.json().then(res => console.log('res', res));
+                })
+            });
+        });
+    }
+</script>
+<script type="text/javascript"
+    src="https://www.google.com/recaptcha/api.js?render=6LeqYd4fAAAAAN5uxDilw6WYP5x6tjY10a1Xt6Ej"></script>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Test recaptcha V2</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <h3>This a page for test recaptcha V2</h3>
+    <form action="?" method="POST">
+        <div class="g-recaptcha" data-sitekey="6LeyxN4fAAAAAMoWkc3eEmqcpxuUuDZQdUPHerZO"></div>
+        <br/>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<script type="text/javascript">
+    function onloadCallback() {
+        grecaptcha.render();
+    };
+</script>
+
+</html>
