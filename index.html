@@ -4,14 +4,14 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Test recaptcha</title>
-        <script src='https://www.google.com/recaptcha/api.js?render:6Lf_gdofAAAAAC4NdkIB4N1XAgmPz2qvgP1_MkvU'></script>
+        <script src='https://www.google.com/recaptcha/api.js?render:6LeqYd4fAAAAAN5uxDilw6WYP5x6tjY10a1Xt6Ej'></script>
     </head>
     <body>
         this a page for test recaptcha
     </body>
     <script>
         grecaptcha.ready(function() {
-          grecaptcha.execute('6Lf_gdofAAAAAC4NdkIB4N1XAgmPz2qvgP1_MkvU', {action: 'submit'}).then(function(token) {
+          grecaptcha.execute('6LeqYd4fAAAAAN5uxDilw6WYP5x6tjY10a1Xt6Ej', {action: 'submit'}).then(function(token) {
               console.log('token', token);
               fetch('http://localhost:4001/getRecaptcha', {
                 method: 'POST',
@@ -21,5 +21,13 @@
               })
           });
         });
+
+        // fetch('http://localhost:4001/getRecaptcha', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json;charset=utf-8'
+        //         },
+        //         body: JSON.stringify({token: 'ssssssssss'}),
+        //       }).then()
       </script>
 </html>
