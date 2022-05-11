@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>reCAPTCHA demo: Explicit render after an onload callback</title>
+    <script>
+        var onSubmit = function(token) {
+          console.log('success!');
+        };
+
+        var onloadCallback = function() {
+          grecaptcha.render('submit', {
+            'sitekey' : '6Lc22d8fAAAAAAoRAlpzzDr4JCYvUkwI8Ks6J8uP',
+            'callback' : onSubmit,
+            'badge': 'inline'
+          });
+        };
+    </script>
+  </head>
+  <style>
+    .grecaptcha-badge {
+      display: none;
+    }
+  </style>
+  <body>
+    <input id='submit' type="button" value="Submit">
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
+  </body>
+</html>

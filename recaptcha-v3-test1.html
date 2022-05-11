@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Test recaptcha V3</title>
+</head>
+<!-- <style>
+    .grecaptcha-badge {
+        display: none;
+    }
+</style> -->
+
+<body>
+    <form id="demo-form" method="POST">
+        <button class="g-recaptcha" data-sitekey="6LeqYd4fAAAAAN5uxDilw6WYP5x6tjY10a1Xt6Ej" data-callback='onSubmit'
+            data-action='submit'>Submit</button>
+    </form>
+</body>
+<script>
+    function onSubmit(token) {
+        console.log('token', token);
+        document.getElementById("demo-form").submit();
+    }
+</script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+
+</html>
