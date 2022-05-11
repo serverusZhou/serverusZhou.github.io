@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Browser behavior detection</title>
+    </head>
+    <body>
+        <div id="normalPage">
+            <p>Browser agent: <span id="browserAgent" style="font-weight: 700;"></span></p>
+
+            <p>Third Browser: <span id="isThirdBrowser"></span></p>
+            <p>Support localStorage: <span id="isSupportLocalStorage"></span></p>
+            <p>LocalStorage Value: <span id="localStorageValue"></span></p>
+            <img src="/teamgroup.png" style="display: none;" onload="generateUrl()" id="generateUrlImage" />
+            <p>Base64 Image</p>
+            <img src="" style="max-width: 30%;" id="bse64Image" />
+            <p>
+                <a href="/manual.docx" download>Download a docx</a>
+            </p>
+            <p>
+                <a href="/teamgroup.png" download>Download Image Through Direct URL</a>
+            </p>
+            <p>
+                <a id="base64" download>Download Image Through Base64 Code</a>
+            </p>
+            <p>
+                <a id= 'blob' download>Download Image Through Blob Url</a>
+            </p>
+            <button onclick="openImageInNewPage()">Open image in new page</button>
+             <button onclick="openNewWindow()">Open in new window</button>
+            <p id="error" style="color: red;"></p>
+        </div>
+        <div id="maskPage" style="position: relative;display: none;">
+            <img src="" id="bse64Image1" />
+            <button onclick="closeImageInNewPage()" style="position: relative;bottom: 0;left: 0;">Open image in new page</button>
+        </div>
+        <script type="text/javascript">
+            document.getElementById('browserAgent').innerHTML = navigator.userAgent.toLowerCase();
+    
+            document.getElementById('isThirdBrowser').innerHTML = !!navigator.appVersion.match(/(?:Version\/)([\w_]+)/);
+            
+            document.getElementById('isSupportLocalStorage').innerHTML = window.Storage && window.localStorage && window.localStorage instanceof Storage;
+            
+            window.localStorage && (window.localStorage.setItem('a', 'local storage value is right'));
+                                    
+            document.getElementById('localStorageValue').innerHTML = window.localStorage.getItem('a');
+            
+            let bse64ImagePath = "";
+    
+            window.onerror = function(message) {
+                document.getElementById('error').append(message + '\n');
+            }
+
+            function generateUrl() {
+                const canvas = document.createElement('canvas');
+                const image = document.getElementById('generateUrlImage');
+                const ctx = canvas.getContext('2d');
+                canvas.width = image.naturalWidth;
+                canvas.height = image.naturalHeight;
+
+                ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight);
+
+                bse64ImagePath = document.getElementById('bse64Image1').src = document.getElementById('bse64Image').src = document.getElementById('base64').href = canvas.toDataURL();
+
+                canvas.toBlob(blob => {
+                    document.getElementById('blob').href = URL.createObjectURL(blob);
+                });
+            }
+            
+            function openImageInNewPage() {
+                history.pushState(null, null, location.href + '#showImage');
+                document.getElementById('normalPage').style.display = "none";
+                document.getElementById('maskPage').style.display = "block";
+            }
+            
+            function openNewWindow() {
+                const newWindow = window.open('about:blank');
+
+                newWindow.document.write(`<html><head><title>TOTY</title></head><body><img src="${bse64ImagePath}" /></body></html>`);
+                newWindow.opener = null;
+            }
+            
+            window.addEventListener("hashchange", function(event){
+               if (location.href.indexOf("#showImage") > -1) {
+                 document.getElementById('normalPage').style.display = "none";
+                 document.getElementById('maskPage').style.display = "block";
+               } else {
+                document.getElementById('normalPage').style.display = "block";
+                document.getElementById('maskPage').style.display = "none";                
+               }
+          });
+        </script>
+    </body>
+</html>
