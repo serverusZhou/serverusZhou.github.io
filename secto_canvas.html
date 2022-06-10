@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Secto page</title>
+    <style>
+        #canvas {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="200" height="200">
+</body>
+<script>
+    window.onload = () => {
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        var w = ctx.canvas.width;
+        var h = ctx.canvas.height;
+        ctx.beginPath();
+        ctx.arc(w/2,h/2,50, -Math.PI / 2,Math.PI * 3 / 2);
+        ctx.lineTo(100, 100);
+        ctx.fillStyle = '#e6e6e6';
+        ctx.fill();
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(w/2,h/2,50, -Math.PI / 2,Math.PI);
+        ctx.lineTo(100, 100);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+        ctx.restore();
+    }
+</script>
+
+</html>

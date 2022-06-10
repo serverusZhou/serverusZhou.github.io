@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Secto page</title>
+    <style>
+        #div {
+            margin-top: 200px;
+            margin-left: 200px;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #circle {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: blue;
+            overflow: hidden;
+        }
+
+        #d1 {
+            transform: skewX(135deg);
+            transform-origin: 0 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div">
+        <div id="circle">
+            <div id="d1"></div>
+        </div>
+    </div>
+</body>
+
+</html>
